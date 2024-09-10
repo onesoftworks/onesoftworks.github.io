@@ -1,0 +1,22 @@
+---
+title: Abusing the Process Working Set
+date: 2024-09-10T09:22:19.051Z
+description: A blog to cover the working set and how it can be abused to detect external access to select memory.
+tag: windows, x64, c++
+---
+
+## Understanding the Working Set in Windows
+
+The **working set** of a Windows process refers to the collection of pages in its virtual address space that the process has recently referenced. This set includes shared data, such as libraries used by multiple processes and private data unique to the process. The virtual memory manager optimizes performance by keeping only the necessary pages in memory, minimizing the overall demand on physical memory.
+
+The virtual memory system in Windows is designed to balance efficiency and resource usage. By maintaining a working set, the system can avoid loading all possible pages into memory. This selective loading process ensures that memory is available for other processes and tasks, making the system more responsive.
+
+However, not all memory pages are kept in the working set at all times. Pages that haven’t been used recently may be **paged out** to disk to free up memory for more active processes. When the application needs to access this paged-out memory unexpectedly, a **page fault** occurs.
+
+### What is a Page Fault?
+
+A **page fault** happens when a process attempts to access a page not currently loaded into its working set. When this occurs, the operating system pauses the process, retrieves the required page from the disk, and loads it back into memory. Although this mechanism allows the system to manage memory efficiently, frequent page faults can degrade performance since accessing data from disk is slower than accessing it from memory.
+
+### Detecting Page Faults
+
+Now that we know what a **page fault** is, how can we detect it? Luckily, the Windows API provides us with the `GetWsChanges` function, which retrieves information about the pages that have been added to the working set of the specified process since initialization.
