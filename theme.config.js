@@ -20,5 +20,5 @@ export default {
   ),
   unstable_faviconGlyph: "👋",
   navs: [],
-  darkMode: true,
+  darkMode: true
 };
