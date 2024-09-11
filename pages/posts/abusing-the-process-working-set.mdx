@@ -105,7 +105,7 @@ void watcher::watch( std::stop_token token ) const
 
 In the example above, the `watch_list` contains a list of virtual addresses corresponding to memory pages that should not be paged back into the working set. These allocations are crucial for ensuring that specific memory regions remain outside the working set, reducing their impact on system performance and memory pressure.
 
-To achieve this, all allocations referenced in the `watch_list` must be created using the `VirtualAlloc` function, a Windows API that allows you to allocate memory in a process’s virtual address space. `VirtualAlloc` provides control over the allocation size, memory protection, and type, allowing the creation of memory regions that can later be managed for paging.
+To achieve this, all allocations referenced in the `watch_list` must be created using the `VirtualAlloc` function, a Windows API method that allows you to allocate memory in a process’s virtual address space. `VirtualAlloc` provides control over the allocation size, memory protection, and type, allowing the creation of memory regions that can later be managed for paging.
 
 Once these allocations are made, the pages need to be *paged out* of the working set. This can be done by calling the `VirtualUnlock` function on the allocated memory region. `VirtualUnlock` removes the specified pages from the process's working set, forcing them to reside in the page file on disk rather than in physical memory. This prevents the pages from being accessed directly until they are paged back in as needed by the system.
 
@@ -140,7 +140,7 @@ paged_ptr( T* instance ) : instance( instance ), locked( false )
 }
 ```
 
-Now we need a way to safely access this memory. This is where the implementation of the `lock()` function. his function moves the memory into the working set and provides a shared pointer to access the memory safely. The design ensures that the memory is locked into the working set only when it is actually needed.
+Now we need a way to safely access this memory. This is where the implementation of the `lock()` function. This function moves the memory into the working set and provides a shared pointer to access the memory safely. The design ensures that the memory is locked into the working set only when it is actually needed.
 
 ```cpp
 /// <summary>
