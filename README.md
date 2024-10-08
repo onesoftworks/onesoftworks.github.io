@@ -1,1 +1,0 @@
-# Nextra Blog Theme
