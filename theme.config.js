@@ -1,8 +1,6 @@
 export default {
-  footer: (<div className="my-24 border-t mx-auto flex items-center sm:flex-row flex-col">
-      <p className="text-sm text-gray-500">© By atrexus  —
-        <a href="https://github.com/atrexus" className="text-gray-600" rel="noopener noreferrer" target="_blank">@atrexus</a>
-      </p>
+  footer: (
+    <div className="my-24 mx-auto flex items-center sm:flex-row flex-col">
       <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
         <a target="_blank" href="https://github.com/atrexus" className="ml-3 text-gray-500">
           <svg stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24" fill="none">

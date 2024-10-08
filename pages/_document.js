@@ -23,7 +23,6 @@ export default function Document() {
         
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
       </Head>
       <body>
         <Main />
