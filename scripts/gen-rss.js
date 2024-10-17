@@ -5,7 +5,7 @@ const matter = require('gray-matter')
 
 async function generate() {
   const feed = new RSS({
-    title: 'Atrexu\'s Blog - Learn all about reverse engineering, programming, and more!',
+    title: 'Atrexus\'s Blog - Learn all about reverse engineering, programming, and more!',
     site_url: 'https://atrexus.github.io/',
     feed_url: 'https://atrexus.github.io/feed.xml'
   })
