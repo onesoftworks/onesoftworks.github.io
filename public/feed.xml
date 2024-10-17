@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title><![CDATA[Rajdeep Singh -- demo blog built with nextra and nextjs]]></title>
-        <description><![CDATA[Rajdeep Singh -- demo blog built with nextra and nextjs]]></description>
+        <title><![CDATA[Atrexu's Blog - Learn all about reverse engineering, programming, and more!]]></title>
+        <description><![CDATA[Atrexu's Blog - Learn all about reverse engineering, programming, and more!]]></description>
         <link>https://atrexus.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 10 Sep 2024 13:18:13 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 17 Oct 2024 00:26:45 GMT</lastBuildDate>
         <atom:link href="https://atrexus.github.io/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
-            <title><![CDATA[Abusing the Working Set]]></title>
-            <description><![CDATA[In this blog we will go over how we can use the current process's working set to detect external acceess to select memory regions.]]></description>
-            <link>/posts/abusing-the-working-set</link>
-            <guid isPermaLink="true">/posts/abusing-the-working-set</guid>
+            <title><![CDATA[Roblox Reflection - The Basics (Part 1)]]></title>
+            <description><![CDATA[In this part of the series, we use Binary Ninja's intermediate language to examine Roblox and get a basic understanding of how its reflection system works.]]></description>
+            <link>/posts/roblox-reflection-part1</link>
+            <guid isPermaLink="true">/posts/roblox-reflection-part1</guid>
             <category><![CDATA[windows]]></category>
             <category><![CDATA[ x64]]></category>
             <category><![CDATA[ c++]]></category>
-            <pubDate>Tue, 10 Sep 2024 04:00:00 GMT</pubDate>
+            <category><![CDATA[ roblox]]></category>
+            <pubDate>Wed, 16 Oct 2024 13:28:19 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Abusing the Process Working Set]]></title>
+            <description><![CDATA[This blog explores how the Windows process working set can be manipulated to detect external memory access using a custom working set watcher in C++.]]></description>
+            <link>/posts/abusing-the-process-working-set</link>
+            <guid isPermaLink="true">/posts/abusing-the-process-working-set</guid>
+            <category><![CDATA[windows]]></category>
+            <category><![CDATA[ x64]]></category>
+            <category><![CDATA[ c++]]></category>
+            <pubDate>Tue, 10 Sep 2024 13:28:19 GMT</pubDate>
         </item>
     </channel>
 </rss>
