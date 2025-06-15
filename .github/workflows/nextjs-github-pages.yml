@@ -47,27 +47,42 @@ jobs:
           node-version: "16"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
+      - name: Install dependencies
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+
       - name: Setup Pages
         uses: actions/configure-pages@v2
 
-      - name: Restore cache
-        uses: actions/cache@v3
+      - name: Restore manual Next.js cache (if exists)
+        uses: actions/download-artifact@v4
         with:
-          path: .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+          name: nextjs-cache
+        continue-on-error: true
 
-      - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: Extract .next/cache
+        run: |
+          if [ -f next-cache.tar.gz ]; then
+            tar -xzf next-cache.tar.gz
+          fi
 
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
-      - name: Static HTML export with Next.js
+      - name: Export static HTML with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
 
-      - name: Upload artifact
+      - name: Save updated Next.js cache
+        run: |
+          mkdir -p .next
+          tar -czf next-cache.tar.gz .next/cache || echo "No cache to save"
+
+      - name: Upload Next.js cache artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nextjs-cache
+          path: next-cache.tar.gz
+
+      - name: Upload site artifact for deployment
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./out
